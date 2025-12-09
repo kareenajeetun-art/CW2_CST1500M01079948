@@ -30,7 +30,6 @@ def login_user(username, password):
     if bcrypt.checkpw(password.encode('utf-8'), stored_hash.encode('utf-8')):
         return True, f"Login successful!"
     return False, "Incorrect password."
-    #return True, f"Login successful!"  # TEMPORARY BYPASS FOR DEMO
 
 def migrate_users_from_file(conn, filepath=Path("DATA") / "users.txt"):
     """
