@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+
 """
-auth.py - Secure Authentication (works in PyCharm Run + terminal)
+auth.py - Secure Authentication
 Features:
  - Register / Login / Exit
  - bcrypt password hashing
@@ -17,10 +17,6 @@ import bcrypt
 
 USER_DATA_FILE = "users.txt"
 
-
-# ----------------------
-# Utilities & Persistence
-# ----------------------
 def _ensure_user_file():
     if not os.path.exists(USER_DATA_FILE):
         open(USER_DATA_FILE, "w", encoding="utf-8").close()
@@ -49,9 +45,7 @@ def _append_user(username, hashed):
         f.write(f"{username},{hashed}\n")
 
 
-# ----------------------
-# Hashing functions
-# ----------------------
+
 def hash_password(plain_password: str) -> str:
     if plain_password is None:
         raise ValueError("Password cannot be None")
@@ -66,9 +60,7 @@ def verify_password(plain_password: str, hashed: str) -> bool:
         return False
 
 
-# ----------------------
-# Validation
-# ----------------------
+
 def validate_username(u: str):
     if not u or u.strip() == "":
         return False, "Username cannot be empty."
@@ -91,9 +83,6 @@ def validate_password(p: str):
     return True, ""
 
 
-# ----------------------
-# I/O helpers (get password safely or fallback)
-# ----------------------
 def safe_get_password(prompt: str = "Password: ") -> str:
     """
     Use getpass() when stdin is a TTY. If not (e.g. PyCharm Run console), fall back to input()
@@ -113,9 +102,7 @@ def safe_get_password(prompt: str = "Password: ") -> str:
         return input(prompt)
 
 
-# ----------------------
-# Core flows
-# ----------------------
+
 def register_flow():
     print("\n--- USER REGISTRATION ---")
     username = input("Enter a username: ").strip()
@@ -160,9 +147,7 @@ def login_flow():
         print("Error: Invalid password.")
 
 
-# ----------------------
-# UI / Main
-# ----------------------
+
 def print_menu():
     print("\n" + "-" * 48)
     print("[1] Register a new user")

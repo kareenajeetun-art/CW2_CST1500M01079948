@@ -2,6 +2,8 @@ from app.data.db import connect_database
 from app.data.schema import create_all_tables
 from app.services.user_service import register_user, login_user, migrate_users_from_file
 from app.data.incidents import insert_incident, get_all_incidents, load_csv_to_table_incidents, get_incidents_by_type_count, get_high_severity_by_status, get_incident_types_with_many_cases, update_incident_status, delete_incident
+from app.data.datasets import load_csv_to_table_datasets_metadata
+from app.data.tickets import load_csv_to_table_it_tickets
 from pathlib import Path
 
 def main():
@@ -40,7 +42,9 @@ def main():
     print(f"Total incidents: {len(df)}")
 
     load_csv_to_table_incidents(conn, Path("DATA") / "cyber_incidents.csv", "cyber_incidents")
-
+    load_csv_to_table_datasets_metadata(conn, Path("DATA") / "datasets_metadata.csv", "datasets_metadata")
+    load_csv_to_table_it_tickets(conn, Path("DATA") / "it_tickets.csv", "it_tickets")
+    
     # 5. Query data again
     df = get_all_incidents()
     print(f"Total incidents: {len(df)}")

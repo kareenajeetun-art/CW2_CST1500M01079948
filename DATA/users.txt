@@ -1,3 +1,9 @@
 alice,$2b$12$...,analyst
 bob,$2b$12$...,user
-paul,$2b$12$...,user
+paul,$2b$12$...,userNina:PasswordQ123
+Nina:PasswordQ123
+Nina1:PasswordQ123
+Nina:PPPPpppp123
+Kjee:PPPPpppp123
+:
+kareena:Password456

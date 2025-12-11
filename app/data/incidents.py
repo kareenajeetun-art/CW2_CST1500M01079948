@@ -108,7 +108,7 @@ def load_csv_to_table_incidents(conn, csv_path, table_name):
         print("   No incidents to migrate.")
         return
     
-    # TODO: Read CSV using pandas.read_csv()
+    #Read CSV using pandas.read_csv()
     #pd.read_csv(csv_path)
     df = pd.read_csv(csv_path)
 
@@ -125,7 +125,7 @@ def load_csv_to_table_incidents(conn, csv_path, table_name):
     required_cols = ["date", "incident_type", "severity", "status", "description", "reported_by"]
     df = df[required_cols]
 
-    # TODO: Use df.to_sql() to insert data
+    # Use df.to_sql() to insert data
     # Parameters: name=table_name, con=conn, if_exists='append', index=False
     df.to_sql(
         name=table_name,
@@ -134,7 +134,7 @@ def load_csv_to_table_incidents(conn, csv_path, table_name):
         index=False
     )
     
-    # TODO: Print success message and return row count
+    # Print success message and return row count
     print(f"Loaded {len(df)} rows into '{table_name}'.")
 
     return len(df)
